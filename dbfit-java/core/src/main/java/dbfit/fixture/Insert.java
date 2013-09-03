@@ -36,7 +36,7 @@ public class Insert extends Fixture {
         }
     }
 
-    public static class InsertTable extends ExecutionTable {
+    public static class InsertTable extends FitExecutionTable {
         private DBEnvironment environment;
         private String tableName;
 
@@ -56,7 +56,7 @@ public class Insert extends Fixture {
     protected String getTableName() {
         if ((tableName == null || tableName.trim().length() == 0) && args.length > 0) {
             tableName = args[0];
-        };
+        }
         return tableName;
     }
 }

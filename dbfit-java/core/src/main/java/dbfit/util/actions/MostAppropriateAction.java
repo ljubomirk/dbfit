@@ -1,19 +1,15 @@
 package dbfit.util.actions;
 
-import dbfit.util.*;
+import dbfit.util.Cell;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class MostAppropriateAction implements Action {
-    public List<? extends Action> possibleActions = Arrays.asList(
-            new SaveActualValueToSymbolAction(),
-            new StoredValueEqualsSpecifiedValueAssertion(),
-            new ActualValueDoesNotEqualSpecifiedValueAssertion(),
-            new DisplayActualValueAction(),
-            new ActualValueEqualsSpecifiedValueAssertion(),
-            new AssignSpecifiedValueToAccessor(),
-            new AssignStoredValueToAccessor());
+    public List<? extends Action> possibleActions;
+
+    public MostAppropriateAction(List<? extends Action> actions) {
+        possibleActions = actions;
+    }
 
     public void run(Cell cell) {
         try {

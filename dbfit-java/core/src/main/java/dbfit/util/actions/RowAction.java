@@ -1,11 +1,22 @@
 package dbfit.util.actions;
 
-import dbfit.util.Row;
 import dbfit.fixture.StatementExecution;
 import dbfit.util.Cell;
+import dbfit.util.Row;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class RowAction {
     protected StatementExecution execution;
+    private List<Action> possibleActions = Arrays.asList(
+            new SaveActualValueToSymbolAction(),
+            new StoredValueEqualsSpecifiedValueAssertion(),
+            new ActualValueDoesNotEqualSpecifiedValueAssertion(),
+            new DisplayActualValueAction(),
+            new ActualValueEqualsSpecifiedValueAssertion(),
+            new AssignSpecifiedValueToAccessor(),
+            new AssignStoredValueToAccessor());
 
     public RowAction(StatementExecution execution) {
         this.execution = execution;
@@ -38,7 +49,7 @@ public class RowAction {
 
     private void doCell(Cell cell) throws Throwable {
         try {
-            new MostAppropriateAction().run(cell);
+            new MostAppropriateAction(possibleActions).run(cell);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

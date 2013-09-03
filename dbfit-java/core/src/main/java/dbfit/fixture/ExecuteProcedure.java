@@ -29,7 +29,7 @@ public class ExecuteProcedure extends Fixture {
         }
     }
 
-    public static class ExecuteProcedureTable extends ExecutionTable {
+    public static class ExecuteProcedureTable extends FitExecutionTable {
         private DBEnvironment environment;
         private String procedureName;
         private Expectation expectation;
